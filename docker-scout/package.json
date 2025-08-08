@@ -1,16 +1,17 @@
 {
-  "name": "docker-scout-action",
+  "name": "docker-scout",
   "version": "1.0.0",
-  "description": "GitHub Action to check Docker vulnerabilities",
+  "description": "",
   "main": "index.js",
-  "scripts": {
-    "start": "node index.js"
-  },
   "dependencies": {
-    "@actions/core": "^1.11.1",
-    "@actions/exec": "^1.1.1"
+    "tunnel": "^0.0.6",
+    "undici": "^5.29.0"
   },
-  "devDependencies": {
-    "@vercel/ncc": "^0.38.3"
-  }
+  "devDependencies": {},
+  "scripts": {
+    "test": "node dist/index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
 }
