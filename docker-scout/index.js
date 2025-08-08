@@ -32,6 +32,7 @@ async function dockerInfo() {
     });
 }
 
+/*
 async function getScoutVersion() {
     let version;
     await core.group(`Docker scout version`, async () => {
@@ -51,6 +52,7 @@ async function getScoutVersion() {
     });
     return version;
 }
+*/
 
 async function runScoutCommand(commands, image, format, outputFile) {
     const resultPath = path.join(fs.mkdtempSync(path.join(os.tmpdir(), 'docker-scout-action-')), 'result.txt');
@@ -83,7 +85,7 @@ async function main(inputs) {
         await pullDockerImage(scoutVersion);
         await copyBinary(scoutVersion);
         await dockerInfo();
-        const version = await getScoutVersion();
+        //const version = await getScoutVersion();
         // TODO: cache binary (no changes per your request)
         await runScoutCommand(commands, imageName, outputFormat, outputFile);
     }
