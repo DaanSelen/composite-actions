@@ -3,6 +3,10 @@ name: 'Docker scout'
 description: 'Check vulnerabilities'
 
 inputs:
+  command:
+    description: 'actions to be performed'
+    default: 'cves'
+    required: true
   version:
     description: 'Docker scout version'
     default: 'latest'
