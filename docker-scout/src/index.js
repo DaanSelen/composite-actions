@@ -60,15 +60,19 @@ async function runScoutCommand(commands, image, format, outputFile) {
     core.setOutput('result-file', resultPath);
 
     for (const cmd of commands) {
+        const args = ['scout', cmd, image];
+        if (cmd == 'cves') {
+            args.push('--format', format);
+        }
+
         if (outputFile) {
-            const res = await exec.getExecOutput('docker', ['scout', cmd, image, '--format', format], { silent: true });
+            const res = await exec.getExecOutput('docker', args, { silent: true });
             if (res.stderr && res.stderr.length > 0) {
                 throw new Error(res.stderr);
             }
-
             fs.appendFile(resultPath, res.stdout);
         } else {
-            await exec.exec('docker', ['scout', cmd, image, '--format', format]);
+            await exec.exec('docker', args);
         }
     }
     return resultPath;
